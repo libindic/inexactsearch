@@ -23,7 +23,7 @@
 
 import os
 import re
-from modules.soundex import soundex
+from soundex import soundex
 class InexactSearch:
     def __init__(self):
         self.template=os.path.join(os.path.dirname(__file__), 'approxsearch.html')
