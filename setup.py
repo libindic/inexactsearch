@@ -12,7 +12,6 @@ setup (
     description = "Fuzzy String Search for Indian languages",
     long_description= "This library provides fuzzy string search\
 for Indian languages using Indic Soundex module.",
-    packages = find_packages('.'),
     include_package_data = True,
     setup_requires = ['setuptools-git'],
     install_requires = ['setuptools','soundex'],
