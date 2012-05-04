@@ -9,8 +9,6 @@ import os
 import re
 import soundex
 
-_all_ = ['InexactSearch', 'get_instance']
-
 class InexactSearch:
     def __init__(self):
         self.template=os.path.join(os.path.dirname(__file__), 'approxsearch.html')
@@ -82,7 +80,7 @@ class InexactSearch:
         weight = 0
         if string1 == string2 :
             return 1
-        sx = soundex.get_instance() 
+        sx = soundex.getInstance() 
         soundex_match  = sx.compare(string1,string2)
         if soundex_match == 0 : 
             weight = 1.0 
@@ -108,5 +106,5 @@ class InexactSearch:
     def get_info(self):
         return     "Approximate Search for a string in the given text. Based on bigram search algorithm and indic soundex algorithms"    
         
-def get_instance():
+def getInstance():
     return InexactSearch()
