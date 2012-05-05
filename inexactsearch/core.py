@@ -24,7 +24,7 @@
 _all_ = ['InexactSearch', 'getInstance']
 
 import os
-from soundex import soundex
+import soundex
 
 
 class InexactSearch:
