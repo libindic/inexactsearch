@@ -21,9 +21,12 @@
 # If you find any bugs or have any suggestions email: santhosh.thottingal@gmail.com
 
 
+_all_ = ['InexactSearch', 'getInstance']
+
 import os
-import re
 from soundex import soundex
+
+
 class InexactSearch:
     def __init__(self):
         self.template=os.path.join(os.path.dirname(__file__), 'approxsearch.html')
