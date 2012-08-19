@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup (
     name = "inexactsearch",
-    version = "0.1",
+    version = "0.2",
     url = "http://silpa.org.in/ApproxSearch",
     license = "LGPL-3.0",
     author = "Santhosh Thottingal",
@@ -12,7 +12,7 @@ setup (
     description = "Fuzzy String Search for Indian languages",
     long_description= "This library provides fuzzy string search\
 for Indian languages using Indic Soundex module.",
-    packages = find_packages('.'),
+    packages = ['inexactsearch'],
     include_package_data = True,
     setup_requires = ['setuptools-git'],
     install_requires = ['setuptools','soundex'],

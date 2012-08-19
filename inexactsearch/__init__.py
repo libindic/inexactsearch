@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+<<<<<<< HEAD:__init__.py
 # Approximate Search
 # Copyright 2008 Santhosh Thottingal <santhosh.thottingal@gmail.com>
 # http://www.smc.org.in
@@ -19,4 +20,7 @@
 #
 __import__('pkg_resources').declare_namespace(__name__)
 from inexactsearch import InexactSearch, get_instance
+=======
+from inexactsearch.core import InexactSearch, getInstance
+>>>>>>> testing:inexactsearch/__init__.py
 
