@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup (
     name = "inexactsearch",
-    version = "0.2",
+    version = "0.3",
     url = "http://silpa.org.in/ApproxSearch",
     license = "LGPL-3.0",
     author = "Santhosh Thottingal",
