@@ -28,21 +28,23 @@ import soundex
 
 
 class InexactSearch:
-    def __init__(self):
-        self.template=os.path.join(os.path.dirname(__file__), 'approxsearch.html')
-        
-
+    """
+    This class provides methods for fuzzy searching using word distance
+    as well as phonetics.
+    """
     def bigram_average(self,str1, str2):
         """Return approximate string comparator measure (between 0.0 and 1.0)
         using bigrams.
-        USAGE:
-        score = bigram(str1, str2)
+        :param str1: string 1 for comparison
+        :str1 type : str
+        :param str2: string 2 for comparison
+        :str2 type : str
+        :returns: int score between 0.0 and 1.0
 
-        ARGUMENTS:
-        str1  The first string
-        str2  The second string
+        >>> score = bigram_avearage(str1, str2)
+        0.7
 
-        DESCRIPTION:
+
         Bigrams are two-character sub-strings contained in a string. For example,
         'peter' contains the bigrams: pe,et,te,er.
 
@@ -53,14 +55,14 @@ class InexactSearch:
         # Quick check if the strings are the same - - - - - - - - - - - - - - - - - -
         #
         if (str1 == str2):
-            return     1
+            return 1
         bigr1 = []
         bigr2 = []
         # Make a list of bigrams for both strings - - - - - - - - - - - - - - - - - -
         #
-        for i in range(1,len(str1)):
+        for i in range(1, len(str1)):
             bigr1.append(str1[i-1:i+1])
-        for i in range(1,len(str2)):
+        for i in range(1, len(str2)):
             bigr2.append(str2[i-1:i+1])
 
         # Compute average number of bigrams - - - - - - - - - - - - - - - - - - - - -
@@ -75,17 +77,18 @@ class InexactSearch:
 
         if (len(bigr1) < len(bigr2)):  # Count using the shorter bigram list
             short_bigr = bigr1
-            long_bigr  = bigr2
+            long_bigr = bigr2
         else:
             short_bigr = bigr2
-            long_bigr  = bigr1
-        
+            long_bigr = bigr1
+
         for b in short_bigr:
             if (b in long_bigr):
                 if long_bigr.index(b) == short_bigr.index(b) :
                     common += 1.0
                 else:
-                    dislocation=(long_bigr.index(b) - short_bigr.index(b))/ average
+                    dislocation = (long_bigr.index(b) -
+                                   short_bigr.index(b)) / average
                     if dislocation < 0 :
                         dislocation = dislocation * -1
                     common += 1.0 - dislocation
@@ -93,36 +96,64 @@ class InexactSearch:
 
         w = common / average
         return w
-        
-    def compare (self, string1, string2):
+
+    def compare(self, string1, string2):
+        """
+        Compare strings using soundex if not possible givees biggram avearage.
+
+        :param str1: string 1 for comparison.
+        :type str1: str.
+        :param str2: string 2 for comparison
+        :type str2: str.
+        :returns: int score between 0.0 and 1.0
+
+        """
         weight = 0
-        if string1 == string2 :
+        if string1 == string2:
             return 1
-        sx = soundex.getInstance() 
-        soundex_match  = sx.compare(string1,string2)
-        if soundex_match == 0 : 
-            weight = 1.0 
-        if soundex_match == 1 : 
-            weight = 0.9 
-        if soundex_match == 2 :
+        sx = soundex.getInstance()
+        soundex_match = sx.compare(string1, string2)
+        if soundex_match == 0:
+            weight = 1.0
+        if soundex_match == 1:
+            weight = 0.9
+        if soundex_match == 2:
             weight = 0.8
-        if weight == 0 :
-            return self.bigram_average(string1,string2) 
-        else :
-            return weight    
-            
+        if weight == 0:
+            return self.bigram_average(string1, string2)
+        else:
+            return weight
+
     def search(self, text, key):
+        """
+        Searches for the key in the given text.
+
+        :param text: text in which search has to be done.
+        :type text: str.
+        :param key: key which  has  to be searched
+        :type key: str.
+        :returns: array of strings -> search results
+
+
+        """
         key = key.strip()
         words = text.split()
-        search_results={}
+        search_results = {}
         for word in words:
             word = word.strip()
-            search_results[word]= self.compare(word, key)    
+            search_results[word]= self.compare(word, key)
         return search_results
+
     def get_module_name(self):
+        """ returns module name"""
         return "Approximate Search"
+
     def get_info(self):
-        return     "Approximate Search for a string in the given text. Based on bigram search algorithm and indic soundex algorithms"    
-        
+        """ Returns info on the module"""
+        return "Approximate Search for a string in the given text. Based on bigram search algorithm and indic soundex algorithms"
+
 def getInstance():
+    """
+    returns an instance of :class: `InexactSearch` class.
+    """
     return InexactSearch()
