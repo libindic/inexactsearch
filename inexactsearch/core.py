@@ -132,20 +132,7 @@ class InexactSearch:
         :type text: str.
         :param key: key which  has  to be searched
         :type key: str.
-        :returns: array of strings -> search results
-
-         >>> a.search(u"അത് പരീക്ഷിച്ചുനോക്കുന്നതിന്, ചുവടെ നിങ്ങളുടെ ഭാഷയും എഴുത്ത് ഉപകരണങ്ങളും തിരഞ്ഞെടുത്ത് ടൈപ്പുചെയ്യാൻ ആരംഭിക്കുക.",u"ചുവടെ")
-         u'\u0d05\u0d24\u0d4d': 0.0,
-         u'\u0d06\u0d30\u0d02\u0d2d\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15.': 0.0,
-         u'\u0d09\u0d2a\u0d15\u0d30\u0d23\u0d19\u0d4d\u0d19\u0d33\u0d41\u0d02': 0.0,
-         u'\u0d0e\u0d34\u0d41\u0d24\u0d4d\u0d24\u0d4d': 0.0,
-         u'\u0d1a\u0d41\u0d35\u0d1f\u0d46': 1,
-         u'\u0d1f\u0d48\u0d2a\u0d4d\u0d2a\u0d41\u0d1a\u0d46\u0d2f\u0d4d\u0d2f\u0d3e\u0d7b': 0.0,
-         u'\u0d24\u0d3f\u0d30\u0d1e\u0d4d\u0d1e\u0d46\u0d1f\u0d41\u0d24\u0d4d\u0d24\u0d4d': 0.0,
-         u'\u0d28\u0d3f\u0d19\u0d4d\u0d19\u0d33\u0d41\u0d1f\u0d46': 0.05555555555555556,
-         u'\u0d2a\u0d30\u0d40\u0d15\u0d4d\u0d37\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d28\u0d4b
-         \u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d3f\u0d28\u0d4d,': 0.02551020408163265,
-         u'\u0d2d\u0d3e\u0d37\u0d2f\u0d41\u0d02': 0.0}
+        :returns: A dictionary with words in the string as keys and the score against the key as the value
 
         """
         key = key.strip()

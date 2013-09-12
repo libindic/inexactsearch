@@ -26,6 +26,7 @@ the soundex algorithm also gives a weight. By selecting words which
 has comparison weight more than the threshold weight(which 0.6), we
 get the search results.
 
+``inexactseach`` API
 ----------------------
 
 .. automodule:: inexactsearch.core
