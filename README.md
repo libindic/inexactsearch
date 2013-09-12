@@ -18,4 +18,9 @@ the soundex algorithm also gives a weight. By selecting words which has
 comparison weight more than the threshold weight(which 0.6), we get the 
 search results. 
 
+You can run tests by rubbing ` python setup.py test ` .At the moment very few
+test cases are available.Feel free to contribute tests for your  language.
+
+Read the [docs](http://inexactsearch.readthedocs.org/en/latest/) for more info 
+
 **This module is not yet complete dependency modules are yet to be complete**
