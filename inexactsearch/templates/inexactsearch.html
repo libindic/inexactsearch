@@ -19,17 +19,16 @@ $(document).ready(function() {
     $("form").submit(function(event)
     {
         event.preventDefault();
-        id_result = $('#result');
-        id_error = $('#errormessage');
-        id_progress = $('#progress');
-
-        text= $("textarea[name=input_text]", 'form').val();
-        var key= $("input[name=key]", 'form').val();
-        var jsonRequest = {
-            "method" : "inexactsearch.search",
-            "params" : [text, key],
-            "id" : ""
-        };
+        var id_result = $('#result'),
+            id_error = $('#errormessage'),
+            id_progress = $('#progress'),
+            text = $("textarea[name=input_text]", 'form').val(),
+            key = $("input[name=key]", 'form').val(),
+            jsonRequest = {
+                method: "inexactsearch.search",
+                params: [text, key],
+                id: ""
+            };
 
         $.ajax({
             type: "POST",
@@ -44,9 +43,9 @@ $(document).ready(function() {
             },
             success: function(msg) {
                 id_progress.hide();
-                var resultobj= msg.result;
-                var words = text.split(" ");
-                var highlighted_text= "";
+                var resultobj= msg.result,
+                  words = text.split(" "),
+                  highlighted_text= "";
                 for(var i=0; i<words.length; i++) {
                     if(trim(words[i]).length ==0) {
                         highlighted_text += " ";
