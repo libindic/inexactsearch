@@ -31,47 +31,51 @@ $(document).ready(function() {
                 id: ""
             };
 
-        $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            url: "{{ url_for(main_page + '/JSONRPC' if not main_page == '/' else main_page + 'JSONRPC') }}",
-            data: JSON.stringify(jsonRequest),
-            dataType: "json",
-            beforeSend:function(){
-                id_result.hide();
-                id_error.hide();
-                id_progress.html("Searching. Please Wait...").show();
-            },
-            success: function(msg) {
-                id_progress.hide();
-                var resultobj= msg.result,
-                  words = text.split(" "),
-                  highlighted_text= "";
-                for(var i=0; i<words.length; i++) {
-                    if(trim(words[i]).length ==0) {
-                        highlighted_text += " ";
-                        continue;
-                    }
-                    if(trim(words[i]) == "\n") {
-                        highlighted_text += "<br/>";
-                        continue;
-                    }
-                    var weight = resultobj[words[i]];
-                    if (weight >= 0.6) {
-                        highlighted_text += "<span class='highlight' title='" + weight + "'>" + words[i] + "</span>";
-                    }
-                    else{
-                        highlighted_text += "<span title='"+ weight + "'>" + words[i] + "</span> ";
-                    }
-                }
-                id_error.hide();
-                id_result.html(highlighted_text).show();
-            },
-            error: function(msg) {
-                id_progress.hide();
-                id_error.html("Something went wrong. Please try again!").show();
-            }
-        });
+        if(text !== "" && key !== "") {
+          $.ajax({
+              type: "POST",
+              contentType: "application/json; charset=utf-8",
+              url: "{{ url_for(main_page + '/JSONRPC' if not main_page == '/' else main_page + 'JSONRPC') }}",
+              data: JSON.stringify(jsonRequest),
+              dataType: "json",
+              beforeSend:function(){
+                  id_result.hide();
+                  id_error.hide();
+                  id_progress.html("Searching. Please Wait...").show();
+              },
+              success: function(msg) {
+                  id_progress.hide();
+                  var resultobj= msg.result,
+                    words = text.split(" "),
+                    highlighted_text= "";
+                  for(var i=0; i<words.length; i++) {
+                      if(trim(words[i]).length ==0) {
+                          highlighted_text += " ";
+                          continue;
+                      }
+                      if(trim(words[i]) == "\n") {
+                          highlighted_text += "<br/>";
+                          continue;
+                      }
+                      var weight = resultobj[words[i]];
+                      if (weight >= 0.6) {
+                          highlighted_text += "<span class='highlight' title='" + weight + "'>" + words[i] + "</span>";
+                      }
+                      else{
+                          highlighted_text += "<span title='"+ weight + "'>" + words[i] + "</span> ";
+                      }
+                  }
+                  id_error.hide();
+                  id_result.html(highlighted_text).show();
+              },
+              error: function(msg) {
+                  id_progress.hide();
+                  id_error.html("Something went wrong. Please try again!").show();
+              }
+          });
+      } else {
+          id_error.html("Enter text and try again!").show();
+      }
     });
 });
 </script>
