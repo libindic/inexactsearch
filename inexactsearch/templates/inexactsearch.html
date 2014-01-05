@@ -1,6 +1,11 @@
 {% extends "silpa.html" %}
 
 {% block modulescript %}
+<style>
+.highlight {
+	background-color: yellow;
+}
+</style>
 <script>
 $(document).ready(function() {
     function trim(s)
@@ -8,7 +13,7 @@ $(document).ready(function() {
         var l=0; var r=s.length -1;
         while(l < s.length && s[l] == ' ')
         {
-            l++; 
+            l++;
         }
         while(r > l && s[r] == ' ')
         {
