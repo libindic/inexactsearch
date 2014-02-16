@@ -54,21 +54,21 @@ $(document).ready(function() {
                     words = text.split(" "),
                     highlighted_text= "";
                   for(var i=0; i<words.length; i++) {
-                      if(trim(words[i]).length ==0) {
+                      var word = words[i];
+                      if(trim(word).length === 0) {
                           highlighted_text += " ";
                           continue;
                       }
-                      if(trim(words[i]) == "\n") {
+                      if(trim(word) == "\n") {
                           highlighted_text += "<br/>";
                           continue;
                       }
-                      var weight = resultobj[words[i]];
-                      if (weight >= 0.6) {
-                          highlighted_text += "<span class='highlight' title='" + weight + "'>" + words[i] + "</span>";
+                      var weight = resultobj[words[i]],
+                        span = $("<span>").attr("title", weight).text(word);
+                      if(weight >= 0.6) {
+                          span.addClass("highlight");
                       }
-                      else{
-                          highlighted_text += "<span title='"+ weight + "'>" + words[i] + "</span> ";
-                      }
+                      highlighted_text += " " + span.prop('outerHTML');
                   }
                   id_error.hide();
                   id_result.html(highlighted_text).show();
