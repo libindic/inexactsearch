@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup (
     name = "inexactsearch",
