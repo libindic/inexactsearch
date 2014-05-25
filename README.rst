@@ -5,10 +5,10 @@ Approximate String Search
    https://travis-ci.org/Project-SILPA/inexactsearch.svg?branch=master
    :target: https://travis-ci.org/Project-SILPA/inexactsearch
 
-
+	    
 .. image::
-   https://coveralls.io/repos/Project-SILPA/inexactsearch/badge.png
-   :target: https://coveralls.io/r/Project-SILPA/inexactsearch 
+   https://coveralls.io/repos/Project-SILPA/inexactsearch/badge.png?branch=master
+  :target: https://coveralls.io/r/Project-SILPA/inexactsearch?branch=master
 
 
 This is a `Fuzzy string search
