@@ -1,0 +1,2 @@
+soundex>=1.0
+silpa_common>=0.3
