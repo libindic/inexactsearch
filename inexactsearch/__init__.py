@@ -35,6 +35,28 @@ class InexactSearch(object):
     def __init__(self):
         self.sx = soundex.getInstance()
 
+    def _countCommon(self, shrtBigr, lngBigr, average):
+        common = 0.0
+        for indexShrt, bigr in enumerate(shrtBigr):
+            if bigr in lngBigr:
+                indexLng = lngBigr.index(bigr)
+                if indexLng == indexShrt:
+                    common += 1.0
+                else:
+                    dislocation = (indexLng - indexShrt)/average
+                    if dislocation < 0:
+                        dislocation *= -1
+                    common += 1.0 - dislocation
+
+        return common
+
+    def _createBigram(self, string):
+        bigram = []
+        for i in range(1, len(string)):
+            bigram.append(string[i-1:i+1])
+
+        return bigram
+
     def bigram_average(self, str1, str2):
         """Return approximate string comparator measure (between 0.0 and 1.0)
         using bigrams.
@@ -61,41 +83,19 @@ class InexactSearch(object):
         if (str1 == str2):
             return 1
 
-        bigr1 = []
-        bigr2 = []
-
-        for i in range(1, len(str1)):
-            bigr1.append(str1[i-1:i+1])
-
-        for i in range(1, len(str2)):
-            bigr2.append(str2[i-1:i+1])
+        bigr1 = self._createBigram(str1)
+        bigr2 = self._createBigram(str2)
 
         average = (len(bigr1) + len(bigr2)) / 2.0
 
         common = 0.0
 
         if (len(bigr1) < len(bigr2)):  # Count using the shorter bigram list
-            short_bigr = bigr1
-            long_bigr = bigr2
+            common = self._countCommon(bigr1, bigr2, average)
         else:
-            short_bigr = bigr2
-            long_bigr = bigr1
+            common = self._countCommon(bigr2, bigr1, average)
 
-        for b in short_bigr:
-            shrt_index = short_bigr.index(b)
-            if (b in long_bigr):
-                long_index = long_bigr.index(b)
-                if shrt_index == long_index:
-                    common += 1.0
-                else:
-                    dislocation = (long_index - shrt_index) / 2.0
-                    if dislocation < 0:
-                        dislocation = dislocation * -1
-                    common += 1.0 - dislocation
-                long_bigr[long_index] = ""
-
-        w = common / average
-        return w
+        return common / average
 
     def compare(self, string1, string2):
         ''' Compare strings using soundex if not possible gives
@@ -110,12 +110,9 @@ class InexactSearch(object):
         '''
         weight = 0
         if string1 == string2:
-            return 1
+            return 1.0
 
         soundex_match = self.sx.compare(string1, string2)
-
-        if soundex_match == 0:
-            weight = 1.0
 
         if soundex_match == 1:
             weight = 0.9
