@@ -1,6 +1,16 @@
 Approximate String Search
 ###########################
 
+.. image::
+   https://travis-ci.org/Project-SILPA/inexactsearch.svg?branch=master
+   :target: https://travis-ci.org/Project-SILPA/inexactsearch
+
+
+.. image::
+   https://coveralls.io/repos/Project-SILPA/inexactsearch/badge.png
+   :target: https://coveralls.io/r/Project-SILPA/inexactsearch 
+
+
 This is a `Fuzzy string search
 <http://en.wikipedia.org/wiki/Fuzzy_string_searching>`_
 application. This application illustrates the combined use of `Edit
