@@ -12,7 +12,6 @@ class InexactSearchTest(unittest.TestCase):
                          if value > 0.8)
         self.assertGreater(len(list(filtered_keys)), 0)
 
-
     def setUp(self):
         self.ies = getInstance()
         self.sndx = soundex.getInstance()
@@ -33,7 +32,8 @@ class InexactSearchTest(unittest.TestCase):
 
     def test_compare(self):
         self.assertEqual(self.ies.compare("toxicity", "city"), 0.8)
-        self.assertEqual(self.ies.compare(u"ಮಾವಿನ ಹಣ್ಣು", u"माविन हण्णु "), 0.9)
+        self.assertEqual(self.ies.compare(u"ಮಾವಿನ ಹಣ್ಣು", u"माविन हण्णु "),
+                         0.9)
         self.assertEqual(self.ies.compare(u"ಮಾವಿನ ಹಣ್ಣು", "mango"), 0.0)
         self.assertEqual(self.ies.compare(u"ಮಾವಿನ ಹಣ್ಣು", u"ಮಾವಿನ ಹಣ್ಣು"), 1)
 
