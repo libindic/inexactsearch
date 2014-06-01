@@ -40,7 +40,7 @@ $(document).ready(function() {
           $.ajax({
               type: "POST",
               contentType: "application/json; charset=utf-8",
-              url: "{{ url_for('api.handle_jsonrpc_call')}}",
+              url: "{{ url_for('api_jsonrpc.handle_jsonrpc_call')}}",
               data: JSON.stringify(jsonRequest),
               dataType: "json",
               beforeSend:function(){
