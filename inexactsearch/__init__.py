@@ -19,11 +19,11 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-
-_all_ = ['InexactSearch', 'getInstance']
-
 from silpa_common import servicemethod
 import soundex
+
+
+_all_ = ['InexactSearch', 'getInstance']
 
 
 class InexactSearch(object):
@@ -43,7 +43,7 @@ class InexactSearch(object):
                 if indexLng == indexShrt:
                     common += 1.0
                 else:
-                    dislocation = (indexLng - indexShrt)/average
+                    dislocation = (indexLng - indexShrt) / average
                     if dislocation < 0:
                         dislocation *= -1
                     common += 1.0 - dislocation
@@ -53,7 +53,7 @@ class InexactSearch(object):
     def _createBigram(self, string):
         bigram = []
         for i in range(1, len(string)):
-            bigram.append(string[i-1:i+1])
+            bigram.append(string[i - 1:i + 1])
 
         return bigram
 
