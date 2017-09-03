@@ -1,13 +1,9 @@
 travis:
-	nosetests -s --with-coverage --cover-package=inexactsearch
-	flake8 inexactsearch
+	python setup.py test --coverage \
+		--coverage-package-name=inexactsearch
+	flake8 --max-complexity 10 libindic/inexactsearch
 
 clean:
-	find . -name "*.pyc" -exec rm -vf {} \;
-	find -name __pycache__ -delete
-
-tox:
-	tox
-
-flake:
-	flake8 inexactsearch
+	find . -iname "*.pyc" -exec rm -vf {} \;
+	find . -iname "__pycache__" -delete
+	sudo rm -rf build dist *egg* .tox .coverage
