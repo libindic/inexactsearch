@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-import unittest
-import soundex
-from inexactsearch import getInstance
+
+from testtools import TestCase
+
+from .. import InexactSearch
 
 
-class InexactSearchTest(unittest.TestCase):
+class InexactSearchTest(TestCase):
 
     def assertInexactSearchSuccess(self, result):
         filtered_keys = (key for value, key in
@@ -13,8 +14,8 @@ class InexactSearchTest(unittest.TestCase):
         self.assertGreater(len(list(filtered_keys)), 0)
 
     def setUp(self):
-        self.ies = getInstance()
-        self.sndx = soundex.getInstance()
+        super(InexactSearchTest, self).setUp()
+        self.ies = InexactSearch()
 
     def test_bigram_average(self):
         self.assertAlmostEqual(self.ies.bigram_average(u"toxicity", u"city"),
