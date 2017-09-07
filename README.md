@@ -13,7 +13,7 @@ By mixing both written like(edit distance) and sounds like(soundex), we achieve 
 1. Clone the repository `git clone https://github.com/libindic/inexactsearch.git`
 2. Change to the cloned directory `cd inexactsearch`
 3. Run setup.py to create installable source `python setup.py sdist`
-3. Install using pip `pip install dist/inexactsearch*.tar.gz`
+4. Install using pip `pip install dist/libindic-inexactsearch*.tar.gz`
 
 ## Usage
 ```
