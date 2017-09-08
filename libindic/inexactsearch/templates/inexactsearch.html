@@ -33,7 +33,8 @@ $(document).ready(function() {
             jsonRequest = {
                 method: "inexactsearch.search",
                 params: [text, key],
-                id: ""
+                id: "jsonrpc",
+                jsonrpc: "2"
             };
 
         if(text !== "" && key !== "") {
