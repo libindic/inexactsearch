@@ -19,8 +19,8 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-from silpa_common import servicemethod
-import soundex
+from libindic.utils import servicemethod
+from libindic.soundex import Soundex
 
 
 _all_ = ['InexactSearch', 'getInstance']
@@ -33,7 +33,7 @@ class InexactSearch(object):
     """
 
     def __init__(self):
-        self.sx = soundex.getInstance()
+        self.sx = Soundex()
 
     def _countCommon(self, shrtBigr, lngBigr, average):
         common = 0.0
