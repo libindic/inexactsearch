@@ -31,7 +31,8 @@ $(document).ready(function() {
             text = $("textarea[name=input_text]", 'form').val(),
             key = $("input[name=key]", 'form').val(),
             jsonRequest = {
-                method: "inexactsearch.search",
+                module: "libindic.inexactsearch",
+                method: "search",
                 params: [text, key],
                 id: ""
             };
@@ -40,7 +41,7 @@ $(document).ready(function() {
           $.ajax({
               type: "POST",
               contentType: "application/json; charset=utf-8",
-              url: "/api/JSONRPC",
+              url: "/api",
               data: JSON.stringify(jsonRequest),
               dataType: "json",
               beforeSend:function(){
