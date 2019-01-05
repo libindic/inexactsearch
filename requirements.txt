@@ -1,2 +1,2 @@
-soundex>=1.0
-silpa_common>=0.3
+git+https://github.com/libindic/Soundex.git#egg=libindic_soundex
+git+https://github.com/libindic/silpa-common.git#egg=libindic_utils

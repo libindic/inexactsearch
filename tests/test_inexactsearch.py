@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from testtools import TestCase
+import unittest
+from libindic.inexactsearch import InexactSearch
 
-from .. import InexactSearch
 
-
-class InexactSearchTest(TestCase):
+class InexactSearchTest(unittest.TestCase):
 
     def assertInexactSearchSuccess(self, result):
         filtered_keys = (key for value, key in
@@ -40,5 +39,8 @@ class InexactSearchTest(TestCase):
 
     def test_search(self):
         self.assertInexactSearchSuccess(self.ies.search(u"സ്‌കൂള്‍ യുവജനോത്സവ \
-        മത്സരങ്ങളില്‍ ഏറെ ശ്രദ്ധപിടിച്ചുപറ്റുന്ന  ഇനങ്ങളില്‍ ഒന്നാണ് ഏകാഭിനയം.\
-        ഒന്നില്‍  കൂടുതല്‍", u"ಒನ್ನಿಲ್"))
+        മത്സരങ്ങളില്‍ ഏറെ ശ്രദ്ധപിടിച്ചുപറ്റുന്ന ഇനങ്ങളില്‍ ഒന്നാണ് ഏകാഭിനയം.\
+        ഒന്നില്‍ കൂടുതല്‍", u"ಒನ್ನಿಲ್"))
+
+if __name__ == '__main__':
+    unittest.main()

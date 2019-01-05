@@ -80,7 +80,7 @@ class InexactSearch(object):
         returned.
         """
 
-        if (str1 == str2):
+        if str1 == str2:
             return 1
 
         bigr1 = self._createBigram(str1)
@@ -90,7 +90,7 @@ class InexactSearch(object):
 
         common = 0.0
 
-        if (len(bigr1) < len(bigr2)):  # Count using the shorter bigram list
+        if len(bigr1) < len(bigr2):  # Count using the shorter bigram list
             common = self._countCommon(bigr1, bigr2, average)
         else:
             common = self._countCommon(bigr2, bigr1, average)
@@ -122,8 +122,8 @@ class InexactSearch(object):
 
         if weight == 0:
             return self.bigram_average(string1, string2)
-        else:
-            return weight
+
+        return weight
 
     @servicemethod
     def search(self, text, key):
